@@ -1,0 +1,13 @@
+  <aside class="col-sm-4">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><%= @user.name %></h3>
+      </div>
+    </div>
+  </aside>
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li><%= link_to '新規タスクの投稿', new_task_path %></li>
+       <% @tasks.each do |task| %>
+     <li><%= link_to task.id, task %> :<%= task.status %> &gt; <%= task.content %></li>
+     <% end %>
+    </ul>
