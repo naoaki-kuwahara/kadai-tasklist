@@ -5,10 +5,9 @@ class UsersController < ApplicationController
 
   def create
    @user = User.new(user_params)
-
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
-      redirect_to @user
+      redirect_to root_url
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
@@ -16,12 +15,7 @@ class UsersController < ApplicationController
   end
 
   private
-  def correct_user
-    @task = current_user.tasks.find_by(id: params[:id])
-    unless @task
-      redirect_to root_url
-    end
-  end  
+  
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
